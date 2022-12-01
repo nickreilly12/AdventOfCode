@@ -12,4 +12,5 @@ with open('inputs.csv','r') as sourcefile:
             runningtotal = runningtotal + currentvalue
 
 totallist.sort(reverse=True)
-print(totallist[0])
+topthree = totallist[0] + totallist[1] + totallist[2]
+print(topthree)
