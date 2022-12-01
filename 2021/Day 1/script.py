@@ -1,35 +1,41 @@
 import csv
 
-measurements = []
+m = []
 increaselog = ["N/A"]
 
 with open('inputs.csv','r') as sourcefile:
     reader = csv.reader(sourcefile)
     for row in reader:
-        measurements.append(row[0])
+        m.append(row[0])
 
-currentdepth = 0
-nextdepth = 1
+d1 = 0
+d2 = 1
+d3 = 2
+d4 = 3
 
-for measurement in measurements:
+for depth in m:
     try:
-        print(measurements[nextdepth])
+        currentwindowsize = int(m[d1]) + int(m[d2]) + int(m[d3])
+        nextwindowsize = int(m[d2]) + int(m[d3]) + int(m[d4])
     except IndexError:
         continue
-    if measurements[currentdepth] < measurements[nextdepth]:
+    if currentwindowsize < nextwindowsize:
         increaselog.append("increase")
-        currentdepth = currentdepth + 1
-        nextdepth = nextdepth + 1
+        d1 += 1
+        d2 += 1
+        d3 += 1
+        d4 += 1
     else:
         increaselog.append("decrease")
-        currentdepth = currentdepth + 1
-        nextdepth = nextdepth + 1
+        d1 += 1
+        d2 += 1
+        d3 += 1
+        d4 += 1
 
+import pdb;pdb.set_trace()
 increasecount = 0
 
-for depthchange in increaselog:
-    if depthchange == "increase":
-        increasecount = increasecount + 1
-
-#this result comes out 1 less than the real total and I don't know why
-print("The depth has increased ", increasecount, " times")
+for item in increaselog:
+    if item == "increase":
+        increasecount += 1
+print(increasecount)
