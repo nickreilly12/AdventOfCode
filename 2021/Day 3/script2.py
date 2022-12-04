@@ -1,6 +1,7 @@
 import numpy as np
 
-with open('data', 'r') as sourcefile:
-    data = [x for x in sourcefile.read().split()]
+lines = np.loadtxt('data', 'U')
+bits = int(len(lines[0]))
+data = lines.view('U1').astype(int).reshape(lines.shape[0],bits)
 
-N = len(data[0])
+print(data)
