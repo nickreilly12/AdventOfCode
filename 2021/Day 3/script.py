@@ -1,6 +1,3 @@
-gamma = ""
-epsilon = ""
-
 with open('data', 'r') as sourcefile:
     data = [x for x in sourcefile.read().split()]
 
