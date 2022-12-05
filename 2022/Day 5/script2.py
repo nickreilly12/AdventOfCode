@@ -1,5 +1,4 @@
 import numpy as np
-import re
 
 #import crate positions into numpy array
 cratepositions = np.loadtxt("cratepositions.txt",dtype=str, delimiter=" ")
