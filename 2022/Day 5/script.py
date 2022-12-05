@@ -44,7 +44,6 @@ for x in moves:
     #add items to new column
     for item in items_to_insert:
         columns[to-1].insert(0,item[0])
-    """working to here"""
     #remove items from old column
     for item in items_to_insert:
         columns[fm-1].remove(item[0])
