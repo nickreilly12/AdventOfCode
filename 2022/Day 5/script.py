@@ -31,8 +31,6 @@ for column in columns:
 with open('moves.txt','r') as sourcefile:
     moves = [x for x in sourcefile.read().split("\n")]
 
-print(len(moves))
-
 #throw digits from each move line into a list
 #push each item in the list into a different variable
 for x in moves:
