@@ -5,7 +5,7 @@ p1 = 0
 p2 = 1
 p3 = 2
 p4 = 3
-position = 4
+position = 14
 
 for x in data[0]:
     if x == data[0][p2]: 

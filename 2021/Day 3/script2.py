@@ -1,72 +1,85 @@
-def calcO2():
-    with open('data','r') as sourcefile:
-        oxygen_rating = [x for x in sourcefile.read().split('\n')]
-    while len(oxygen_rating) > 1 == True:
-        try:
-            for n in range(0,12):
-                import pdb;pdb.set_trace()
-                count0 = sum(1 for line in oxygen_rating if line[n] == '0')
-                count1 = len(oxygen_rating) - count0
-                for x in oxygen_rating:
-                    if count0 > count1:
-                        if x[n] == "1":
-                            #import pdb; pdb.set_trace()
-                            #print(f"checking character {n} : ", x[n])
-                            #print(f"There are more zeroes in the list so {x} is being removed from the list")
+with open('data','r') as sourcefile:
+    data = [x for x in sourcefile.read().split()]
+
+numlen = len(data[0])
+
+while len(data) > 1:
+    for num in range(0,numlen):
+        count0 = sum(1 for line in data if line[num] == "0")
+        count1 = len(data) - count0
+        delcount = 1
+        dellist = []
+        if count0 > count1:
+            for entry in data:
+                if entry[num] == "1":
+                    delcount += 1
+                    dellist.append(entry)
+        elif count1 > count0:
+            for entry in data:
+                if entry[num] == "0":
+                    delcount += 1
+                    dellist.append(entry)
+        elif count1 == count0:
+            for entry in data:
+                if entry[num] == "0":
+                    delcount += 1
+                    dellist.append(entry)
     
-                            oxygen_rating.remove(x)
-                            #print(oxygen_rating)
-                                
-                    elif count1 > count0:
-                        if x[n] == "0":
-                            #import pdb; pdb.set_trace()
-                            #print(f"checking character {n} : ", x[n])
-                            #print(f"There are more ones in the list so {x} is being removed from the list")
-                            oxygen_rating.remove(x)
-                            #print(oxygen_rating)
-                    else:
-                        if x[n] == "0":
-                            #import pdb; pdb.set_trace()
-                            #print(f"checking character {n} : ", x[n])
-                            #print(f"There is an equal number of ones and zeroes so  {x} is being removed from the list")
-                            oxygen_rating.remove(x)
-                            #print(oxygen_rating)
-        except IndexError:
-            continue
-    return oxygen_rating
-def calcC02():
-    with open('data','r') as sourcefile:
-        co2_rating = [x for x in sourcefile.read().split('\n')]
-    while len(co2_rating) > 1 == True:
-        try:
-            for n in range(0,12):
-                count0 = sum(1 for line in co2_rating if line[n] == '0')
-                count1 = len(co2_rating) - count0
-                for x in co2_rating:
-                    if count0 > count1:
-                        if x[n] == "0":
-                            #print(f"checking character {n} : ", x[n])
-                            #print(f"There are more zeroes in the list so {x} is being removed from the list")
-                            co2_rating.remove(x)
-                            #print(co2_rating)                               
-                    elif count1 > count0:
-                        if x[n] == "1":
-                            #print(f"checking character {n} : ", x[n])
-                            #print(f"There are more ones in the list so {x} is being removed from the list")
-                            co2_rating.remove(x)
-                            #print(co2_rating)
-                    else:
-                        if x[n] == "1":
-                            #print(f"checking character {n} : ", x[n])
-                            #print(f"There is an equal number of ones and zeroes so  {x} is being removed from the list")
-                            co2_rating.remove(x)
-                            #print(co2_rating)
-        except IndexError:
-            continue
-    return co2_rating
+        for item in dellist:
+            for d in data:
+                if item == d:
+                    data.remove(item)
 
-o2rating = calcO2()
-co2rating = calcC02()
-print(o2rating)
-print(co2rating)
+print(data)
 
+with open('data','r') as sourcefile:
+    data = [x for x in sourcefile.read().split()]
+
+numlen = len(data[0])
+
+while len(data) > 1:
+    for num in range(0,numlen):
+        count0 = sum(1 for line in data if line[num] == "0")
+        count1 = len(data) - count0
+        delcount = 1
+        dellist = []
+        if count0 > count1:
+            for entry in data:
+                if entry[num] == "0":
+                    delcount += 1
+                    dellist.append(entry)
+        elif count1 > count0:
+            for entry in data:
+                if entry[num] == "1":
+                    delcount += 1
+                    dellist.append(entry)
+        elif count1 == count0:
+            for entry in data:
+                if entry[num] == "1":
+                    delcount += 1
+                    dellist.append(entry)
+    
+        for item in dellist:
+            for d in data:
+                if item == d:
+                    data.remove(item)
+
+print(data)
+
+p1 = "101011111111"
+p0 = "010000100011"
+
+bitvalue = 2048
+numval = 0
+for x in p1:
+    if x == "1":
+        numval+=bitvalue
+        bitvalue /= 2
+print(f"the numerical value of the p1 bits is",numval)
+bitvalue = 2048
+numval = 0
+for x in p0:
+    if x == "1":
+        numval+=bitvalue
+        bitvalue /= 2
+print(f"the numerical value of the p0 bits is",numval)
