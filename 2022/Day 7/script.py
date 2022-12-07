@@ -36,14 +36,10 @@ for row in rows:
         if '$ cd /' in row:
             current = changedirectory(current,'/','/')
             print(current)
-            import pdb;pdb.set_trace()
         elif '$ cd ..' in row:
             current = changedirectory(current,'..','..')
             print(current)
-            import pdb;pdb.set_trace()
-        else:
+        elif '$ cd ' in row:
             newdir = row.split(' ')[2]
             current = changedirectory(current,'new',newdir)
             print(current)
-            import pdb;pdb.set_trace()
-
