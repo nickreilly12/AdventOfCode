@@ -39,7 +39,9 @@ for row in rows:
         elif '$ cd ..' in row:
             current = changedirectory(current,'..','..')
             print(current)
-        elif '$ cd ' in row:
+        elif '$ ls' in row:
+            print("show files")
+        else:
             newdir = row.split(' ')[2]
             current = changedirectory(current,'new',newdir)
             print(current)
