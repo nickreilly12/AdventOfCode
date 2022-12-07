@@ -3,7 +3,7 @@ with open('data.txt','r') as sourcefile:
     for x in sourcefile.read().split('\n'):
         rows.append(x)
 
-directory_size = {}
+file_size = {}
 
 def changedirectory(current,changetype,new):
     if changetype == "..":
@@ -34,8 +34,8 @@ def changedirectory(current,changetype,new):
         if new[0] != "/": new = "/" + new
     return new
 
-def save_sizes_for_directory(current,size):
-    directory_size[current] = [size]
+def save_sizes_for_file(current,size):
+    file_size[current] = [size]
 
 current = '/'
 
@@ -57,9 +57,14 @@ for row in rows:
         continue
     else:
         #this is saving each row individually rather than totalling each file into one value...
-        save_sizes_for_directory(current+'/'+row.split(' ')[1],int(row.split(' ')[0]))
+        save_sizes_for_file(current+'/'+row.split(' ')[1],int(row.split(' ')[0]))
 
 #All files and their sizes have been imported into a single dictionary. I just need to work out how to sum them up...
-       
-for key,value in directory_size.items():
-    print(key,value)
+#I'm currently trying to get a single list of all the directories with duplicates removed. I can then work on summing all of the files within those directories...
+directory_list = []
+for key,value in file_size.items():
+    directory_list.append(key.split('/'))
+
+for n in directory_list:
+    n.remove(n[-1])
+    n.remove(n[0])
