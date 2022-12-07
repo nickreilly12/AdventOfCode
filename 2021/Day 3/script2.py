@@ -65,21 +65,3 @@ while len(data) > 1:
                     data.remove(item)
 
 print(data)
-
-p1 = "101011111111"
-p0 = "010000100011"
-
-bitvalue = 2048
-numval = 0
-for x in p1:
-    if x == "1":
-        numval+=bitvalue
-        bitvalue /= 2
-print(f"the numerical value of the p1 bits is",numval)
-bitvalue = 2048
-numval = 0
-for x in p0:
-    if x == "1":
-        numval+=bitvalue
-        bitvalue /= 2
-print(f"the numerical value of the p0 bits is",numval)
