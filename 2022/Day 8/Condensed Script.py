@@ -66,10 +66,7 @@ for row in datalist:
 forrest_array[:,:,0] = np.asarray(totallist)
 
 #change the seen log on the outside of the forrest to 1
-forrest_array[:,0,1] = 1
-forrest_array[0,:,1] = 1
-forrest_array[:,-1,1] = 1
-forrest_array[-1,:,1] = 1
+forrest_array[:,0,1], forrest_array[0,:,1], forrest_array[:,-1,1], forrest_array[-1,:,1] = 1
 
 #loop through the rows
 forrest_array = left_to_right_check(forrest_array)
