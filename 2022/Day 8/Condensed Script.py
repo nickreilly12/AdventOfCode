@@ -46,6 +46,7 @@ def top_to_bottom_check(forrest_array):
                 else:
                     continue
     return forrest_array
+
 #Initiate a numpy arrany the size of the forrest but with a 3rd dimention which will act as a log of which trees have been seen
 forrest_array = np.zeros((99,99,2),dtype=int)
 
